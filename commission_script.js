@@ -37,11 +37,15 @@ function validateInput(empName, empID, locks, stocks, barrels) {
     error = true;
   };
 
+  function isInvalid(value, min, max) {
+    return value === '' || isNaN(value) || value < min || value > max;
+}
+
   if (!empName) markError(empNameEl);
-  if (!isNaN(empID)) markError(empIDEl);
-  if (!isNaN(locks >= 1 && locks <= 70)) markError(locksEl);
-  if (!isNaN(stocks >= 1 && stocks <= 80)) markError(stocksEl);
-  if (!isNaN(barrels >= 1 && barrels <= 90)) markError(barrelsEl);
+  if (!(empID, 100000, 999999)) markError(empIDEl);
+  if (isInvalid(locks, 1, 70)) markError(locksEl);
+  if (isInvalid(stocks, 1, 80)) markError(stocksEl);
+  if (isInvalid(barrels, 1, 90)) markError(barrelsEl);
 
   return !error;
 }
